@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Tarea5.EVENTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Eventos</h2>
+
+<p>
+    @Html.ActionLink("Agregar nuevo evento", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Buscar por Fecha: @Html.TextBox("searchString", "", new { placeholder = "mes/dia/año" })
+        <input type="submit" value="Buscar" class="btn btn-primary" />
+    </p>
+}
+
+<table class="table table-hover table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.ActionLink("EVENTO", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("LUGAR", "Index", new { sortOrder = ViewBag.LugarSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("FECHA", "Index", new { sortOrder = ViewBag.DateSortParm })
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EVENTO1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LUGAR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FECHA)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.CODIGO }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.CODIGO }) |
+                @Html.ActionLink("Borrar", "Delete", new { id = item.CODIGO })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,42 @@
+﻿@model Tarea5.EVENTO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>EVENTO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EVENTO1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EVENTO1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LUGAR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LUGAR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.CODIGO }) |
+    @Html.ActionLink("Volver a la lista", "Index")
+</p>

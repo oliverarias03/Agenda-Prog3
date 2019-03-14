@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Tarea5.CONTACTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Contactos</h2>
+
+<p>
+    @Html.ActionLink("Agregar nuevo contacto", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Buscar por Nombre: @Html.TextBox("SearchString")
+        <input type="submit" value="Buscar" class="btn btn-primary" />
+    </p>
+}
+
+<table class="table table-hover table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.ActionLink("NOMBRE", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TELEFONO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DIRECCION)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NOMBRE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TELEFONO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DIRECCION)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.CODIGO }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.CODIGO }) |
+                @Html.ActionLink("Borrar", "Delete", new { id = item.CODIGO })
+            </td>
+        </tr>
+    }
+
+</table>
